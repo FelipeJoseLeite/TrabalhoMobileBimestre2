@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="220dp"
             android:layout_height="match_parent"
-            android:text="MATEUS PESSINI"
+            android:text="Aluno: "
             android:id="@+id/exNome"
             android:layout_marginLeft="10dp"
             android:textStyle="bold"/>
@@ -40,7 +40,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="APROVADO"
+            android:text="Aprovado: "
             android:id="@+id/exAprovacao"
             android:textStyle="bold"/>
     </LinearLayout>

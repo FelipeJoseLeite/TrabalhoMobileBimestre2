@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RelacaonotasActivity"
+    tools:context=".Activity.RelacaonotasActivity"
     android:padding="15dp"
     android:orientation="vertical">
 
@@ -36,12 +36,13 @@
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edALUNO"
+                android:id="@+id/spALUNO"
                 android:layout_marginBottom="10dp"
                 android:padding="20dp"
                 android:background="@drawable/borda" />
 
             <ListView
+                android:id="@+id/lvAlunos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/borda">
