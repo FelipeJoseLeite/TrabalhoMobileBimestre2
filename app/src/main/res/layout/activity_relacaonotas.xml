@@ -5,44 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RelacaonotasActivity"
-    android:padding="10dp"
+    android:padding="15dp"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RELAÇÃO DE NOTAS"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textSize="15dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:id="@+id/tvALUNO"
-        android:hint="ALUNO"
-        android:textSize="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RELAÇÃO DE NOTAS"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="15dp"/>
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edALUNO"
-        android:layout_marginBottom="10dp"
-        android:padding="20dp"
-        android:background="@drawable/borda" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tvALUNO"
+                android:hint="ALUNO"
+                android:textSize="20dp"/>
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/borda">
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edALUNO"
+                android:layout_marginBottom="10dp"
+                android:padding="20dp"
+                android:background="@drawable/borda" />
 
-    </ListView>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/borda">
+            </ListView>
 
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
