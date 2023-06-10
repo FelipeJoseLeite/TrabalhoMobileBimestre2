@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +19,9 @@ import com.example.trabpaulinho.Model.Aluno;
 import com.example.trabpaulinho.Model.Disciplina;
 import com.example.trabpaulinho.R;
 import com.example.trabpaulinho.globais.Globais;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,47 +64,54 @@ public class MainActivity extends AppCompatActivity {
         Disciplina dp1 = new Disciplina();
         dp1.setId(1);
         dp1.setNome("Desenvolvimento Web");
-        dp1.setPrimBim(0.0);
-        dp1.setSegBim(0.0);
-        dp1.setTercBim(0.0);
-        dp1.setQuarBim(0.0);
+        dp1.setPrimBim(0);
+        dp1.setSegBim(0);
+        dp1.setTercBim(0);
+        dp1.setQuarBim(0);
 
         Disciplina dp2 = new Disciplina();
-        dp1.setId(2);
-        dp1.setNome("Projeto");
-        dp1.setPrimBim(0.0);
-        dp1.setSegBim(0.0);
-        dp1.setTercBim(0.0);
-        dp1.setQuarBim(0.0);
+        dp2.setId(2);
+        dp2.setNome("Projeto");
+        dp2.setPrimBim(0);
+        dp2.setSegBim(0);
+        dp2.setTercBim(0);
+        dp2.setQuarBim(0);
 
         Disciplina dp3 = new Disciplina();
-        dp1.setId(3);
-        dp1.setNome("Qualidade de software");
-        dp1.setPrimBim(0.0);
-        dp1.setSegBim(0.0);
-        dp1.setTercBim(0.0);
-        dp1.setQuarBim(0.0);
+        dp3.setId(3);
+        dp3.setNome("Qualidade de software");
+        dp3.setPrimBim(0);
+        dp3.setSegBim(0);
+        dp3.setTercBim(0);
+        dp3.setQuarBim(0);
 
         Disciplina dp4 = new Disciplina();
-        dp1.setId(4);
-        dp1.setNome("Frameworks");
-        dp1.setPrimBim(0.0);
-        dp1.setSegBim(0.0);
-        dp1.setTercBim(0.0);
-        dp1.setQuarBim(0.0);
+        dp4.setId(4);
+        dp4.setNome("Frameworks");
+        dp4.setPrimBim(0);
+        dp4.setSegBim(0);
+        dp4.setTercBim(0);
+        dp4.setQuarBim(0);
 
         Disciplina dp5 = new Disciplina();
-        dp1.setId(5);
-        dp1.setNome("Desenvolvimento Mobile");
-        dp1.setPrimBim(0.0);
-        dp1.setSegBim(0.0);
-        dp1.setTercBim(0.0);
-        dp1.setQuarBim(0.0);
+        dp5.setId(5);
+        dp5.setNome("Desenvolvimento Mobile");
+        dp5.setPrimBim(0);
+        dp5.setSegBim(0);
+        dp5.setTercBim(0);
+        dp5.setQuarBim(0);
 
-        String[] vetorDisciplina = new String[]{"", dp1.getNome(), dp2.getNome(), dp3.getNome(), dp4.getNome(), dp5.getNome()};
+        Disciplina[] vetorDisciplina = new Disciplina[]{dp1, dp2, dp3, dp4, dp5};
 
         ArrayAdapter adapterBimestre = new ArrayAdapter(this, android.R.layout.simple_list_item_1, vetorBimestres);
-        ArrayAdapter adapterDisciplina = new ArrayAdapter(this, android.R.layout.simple_list_item_1, vetorDisciplina);
+
+        List<String> listaNomesDisciplinas = new ArrayList<>();
+        for (Disciplina disciplina : vetorDisciplina) {
+            listaNomesDisciplinas.add(disciplina.getNome());
+        }
+
+
+        ArrayAdapter<String> adapterDisciplina = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaNomesDisciplinas);
 
         spDisciplina.setAdapter(adapterDisciplina);
         spBimestre.setAdapter(adapterBimestre);
@@ -108,7 +119,17 @@ public class MainActivity extends AppCompatActivity {
         spDisciplina.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                dpSel = (Disciplina) spDisciplina.getItemAtPosition(position);
+                String nomeDisciplina = (String) spDisciplina.getItemAtPosition(position);
+
+                Disciplina disciplinaSelecionada = null;
+                for (Disciplina disciplina : vetorDisciplina) {
+                    if (disciplina.getNome().equals(nomeDisciplina)) {
+                        disciplinaSelecionada = disciplina;
+                        dpSel = disciplinaSelecionada;
+                        break;
+                    }
+                }
+
             }
 
             @Override
@@ -140,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
         btVernotas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 abrirRelacaoNotas();
             }
         });
@@ -152,20 +172,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if(Globais.listaNotas == null){
+            Globais.listaNotas = new ArrayList<>();
+        }
+
     }
 
     private void abrirRelacaoNotas() {
-        Intent intent = new Intent(this, RelacaonotasActivity.class);
-        startActivity(intent);
+        try {
+            Intent intent = new Intent(this, RelacaonotasActivity.class);
+            startActivity(intent);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Toast.makeText(this, "Ocorreu um erro: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
+
     private void abrirRelacaoMedias() {
-        Intent intent = new Intent(this, RelacaomediaActivity.class);
-        startActivity(intent);
+        try {
+            Intent intent = new Intent(this, RelacaomediaActivity.class);
+            startActivity(intent);
+        } catch (Exception ex) {
+            Toast.makeText(this, "Não existe alunos no sistema, favor adicionar Aluno para visualização", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void salvar() {
-        double nota = 0.0;
+        int nota = 0;
         if (!edNota.getText().toString().isEmpty()) {
             nota = Integer.parseInt(edNota.getText().toString());
         }
@@ -178,8 +213,8 @@ public class MainActivity extends AppCompatActivity {
         if (edRa.getText().toString().isEmpty()) {
             edRa.setError("Informe o RA do Aluno");
         }
-        if (nota < 0.0 || nota > 10.0) {
-            edNota.setError("Informe uma nota entre 0 e 100");
+        if (nota < 0 || nota > 10) {
+            edNota.setError("Informe uma nota entre 0 e 10");
         } else if (!edNome.getText().toString().isEmpty()) {
         }
         try {
@@ -189,18 +224,21 @@ public class MainActivity extends AppCompatActivity {
             int posicaoAluno = -1;
 
             for (int i = 0; i < Globais.listaNotas.size(); i++) {
+                Toast.makeText(this, "teste GlobDisc "+ Globais.listaNotas.get(i).getDisciplina().getNome(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "teste TelaDisc "+ dpSel.getNome(), Toast.LENGTH_SHORT).show();
                 if (String.valueOf(Globais.listaNotas.get(i).getRa()).equals(edRa.getText().toString())
                         && Globais.listaNotas.get(i).getNome().equals(edNome.getText().toString())
-                        && Globais.listaNotas.get(i).getDisciplina().equals(dpSel)) {
+                        && Globais.listaNotas.get(i).getDisciplina().getNome().equals(dpSel.getNome())) {
                     posicaoAluno = i;
                 }
             }
 
             if (posicaoAluno == -1) {
-
+                Toast.makeText(this, "teste " + posicaoAluno, Toast.LENGTH_SHORT).show();
                 aluno.setNome(edNome.getText().toString());
                 aluno.setRa(Integer.parseInt(edRa.getText().toString()));
                 aluno.setDisciplina(dpSel);
+
 
                 switch (bimSel) {
                     case "1 Bi":
@@ -215,14 +253,14 @@ public class MainActivity extends AppCompatActivity {
                     case "4 Bi":
                         aluno.getDisciplina().setQuarBim(Integer.parseInt(edNota.getText().toString()));
                         break;
-
                 }
-                Globais.listaNotas.add(aluno);
+                    Globais.listaNotas.add(aluno);
                 posicaoAluno = -1;
             }
 
 
             if (posicaoAluno != -1) {
+                Toast.makeText(this, "teste " + posicaoAluno, Toast.LENGTH_SHORT).show();
 
                 Globais.listaNotas.get(posicaoAluno).setNome(edNome.getText().toString());
                 Globais.listaNotas.get(posicaoAluno).setRa(Integer.parseInt(edRa.getText().toString()));
@@ -245,9 +283,7 @@ public class MainActivity extends AppCompatActivity {
                 posicaoAluno = -1;
             }
 
-            Toast.makeText(this,
-                    "Aluno Salvo com Sucesso!",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Aluno Salvo com Sucesso!", Toast.LENGTH_LONG).show();
             clear();
 
         } catch (Exception ex) {
@@ -259,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
     private void clear() {
 
         try {
-            edNota.setText("0.0");
+            edNota.setText("0");
             spDisciplina.setSelection(0);
             spBimestre.setSelection(0);
 

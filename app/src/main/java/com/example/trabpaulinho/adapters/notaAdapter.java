@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.trabpaulinho.Model.Aluno;
 import com.example.trabpaulinho.R;
+import com.example.trabpaulinho.globais.Globais;
 
 import java.util.ArrayList;
 
@@ -40,16 +41,8 @@ public class notaAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).
-                    inflate(R.layout.item_lista_notas,
-                            parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_lista_notas, parent, false);
         }
-
-        double media = 0.0;
-
-
-            media =(lista.get(position).getDisciplina().getPrimBim() + lista.get(position).getDisciplina().getSegBim()
-                    + lista.get(position).getDisciplina().getTercBim()+ lista.get(position).getDisciplina().getQuarBim()) / 4;
 
         Aluno aluno = lista.get(position);
         TextView tvMateria = convertView.findViewById(R.id.tvMateria);
@@ -59,19 +52,22 @@ public class notaAdapter extends BaseAdapter {
         TextView tvTerBim = convertView.findViewById(R.id.Bim3);
         TextView tvQuaBim = convertView.findViewById(R.id.Bim4);
 
+        int primBim = aluno.getDisciplina().getPrimBim();
+        int segBim = aluno.getDisciplina().getSegBim();
+        int terBim = aluno.getDisciplina().getTercBim();
+        int quarBim = aluno.getDisciplina().getQuarBim();
+        int media = (primBim + segBim + terBim + quarBim) / 4;
 
         tvMateria.setText(aluno.getDisciplina().getNome());
-        tvPriBim.setText(tvPriBim.getText().toString() + aluno.getDisciplina().getPrimBim());
-        tvSegBim.setText(tvSegBim.getText().toString() + aluno.getDisciplina().getSegBim());
-        tvTerBim.setText(tvTerBim.getText().toString() + aluno.getDisciplina().getTercBim());
-        tvQuaBim.setText(tvQuaBim.getText().toString() + aluno.getDisciplina().getQuarBim());
-        tvMedia.setText(tvMedia.getText().toString() + media);
-
-
+        tvPriBim.setText("1° Bim: " + primBim);
+        tvSegBim.setText("2° Bim: " + segBim);
+        tvTerBim.setText("3° Bim: " + terBim);
+        tvQuaBim.setText("4° Bim: " + quarBim);
+        tvMedia.setText("Média: " + media);
 
         return convertView;
-
     }
+
 
 
 }

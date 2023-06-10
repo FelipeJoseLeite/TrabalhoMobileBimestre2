@@ -29,7 +29,6 @@ public class RelacaonotasActivity extends AppCompatActivity {
 
         lvNotas = findViewById(R.id.lvAlunos);
         spAluno = findViewById(R.id.spALUNO);
-
         ArrayList<String> arrayAlunos = new ArrayList<>();
 
         for (int i = 0; i < Globais.listaNotas.size(); i++) {
@@ -68,6 +67,7 @@ public class RelacaonotasActivity extends AppCompatActivity {
         }
 
         notaAdapter adapter = new notaAdapter(this, listaFiltrada);
+        adapter.notifyDataSetChanged();
         lvNotas.setAdapter(adapter);
     }
 }

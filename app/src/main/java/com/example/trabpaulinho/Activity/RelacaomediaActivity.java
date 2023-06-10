@@ -32,42 +32,42 @@ public class RelacaomediaActivity extends AppCompatActivity {
         Disciplina dp1 = new Disciplina();
         dp1.setId(1);
         dp1.setNome("Desenvolvimento Web");
-        dp1.setPrimBim(0.0);
-        dp1.setSegBim(0.0);
-        dp1.setTercBim(0.0);
-        dp1.setQuarBim(0.0);
+        dp1.setPrimBim(0);
+        dp1.setSegBim(0);
+        dp1.setTercBim(0);
+        dp1.setQuarBim(0);
 
         Disciplina dp2 = new Disciplina();
-        dp1.setId(2);
-        dp1.setNome("Projeto");
-        dp1.setPrimBim(0.0);
-        dp1.setSegBim(0.0);
-        dp1.setTercBim(0.0);
-        dp1.setQuarBim(0.0);
+        dp2.setId(2);
+        dp2.setNome("Projeto");
+        dp2.setPrimBim(0);
+        dp2.setSegBim(0);
+        dp2.setTercBim(0);
+        dp2.setQuarBim(0);
 
         Disciplina dp3 = new Disciplina();
-        dp1.setId(3);
-        dp1.setNome("Qualidade de software");
-        dp1.setPrimBim(0.0);
-        dp1.setSegBim(0.0);
-        dp1.setTercBim(0.0);
-        dp1.setQuarBim(0.0);
+        dp3.setId(3);
+        dp3.setNome("Qualidade de software");
+        dp3.setPrimBim(0);
+        dp3.setSegBim(0);
+        dp3.setTercBim(0);
+        dp3.setQuarBim(0);
 
         Disciplina dp4 = new Disciplina();
-        dp1.setId(4);
-        dp1.setNome("Frameworks");
-        dp1.setPrimBim(0.0);
-        dp1.setSegBim(0.0);
-        dp1.setTercBim(0.0);
-        dp1.setQuarBim(0.0);
+        dp4.setId(4);
+        dp4.setNome("Frameworks");
+        dp4.setPrimBim(0);
+        dp4.setSegBim(0);
+        dp4.setTercBim(0);
+        dp4.setQuarBim(0);
 
         Disciplina dp5 = new Disciplina();
-        dp1.setId(5);
-        dp1.setNome("Desenvolvimento Mobile");
-        dp1.setPrimBim(0.0);
-        dp1.setSegBim(0.0);
-        dp1.setTercBim(0.0);
-        dp1.setQuarBim(0.0);
+        dp5.setId(5);
+        dp5.setNome("Desenvolvimento Mobile");
+        dp5.setPrimBim(0);
+        dp5.setSegBim(0);
+        dp5.setTercBim(0);
+        dp5.setQuarBim(0);
 
         String[] vetorDisciplina = new String[]{dp1.getNome(), dp2.getNome(), dp3.getNome(), dp4.getNome(), dp5.getNome()};
 
@@ -101,6 +101,7 @@ public class RelacaomediaActivity extends AppCompatActivity {
 
         }
         mediaAdapter adapter = new mediaAdapter(this, listaFiltrada);
+        adapter.notifyDataSetChanged();
         lvMedias.setAdapter(adapter);
     }
 

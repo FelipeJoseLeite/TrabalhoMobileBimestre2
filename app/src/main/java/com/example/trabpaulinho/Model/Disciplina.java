@@ -3,15 +3,15 @@ package com.example.trabpaulinho.Model;
 public class Disciplina {
     private int id;
     private String nome;
-    private double primBim;
-    private double segBim;
-    private double tercBim;
-    private double quarBim;
+    private int primBim;
+    private int segBim;
+    private int tercBim;
+    private int quarBim;
 
     public Disciplina() {
     }
 
-    public Disciplina(int id, String nome, double primBim, double segBim, double tercBim, double quarBim) {
+    public Disciplina(int id, String nome, int primBim, int segBim, int tercBim, int quarBim) {
         this.id = id;
         this.nome = nome;
         this.primBim = primBim;
@@ -28,35 +28,35 @@ public class Disciplina {
         this.id = id;
     }
 
-    public double getPrimBim() {
+    public int getPrimBim() {
         return primBim;
     }
 
-    public void setPrimBim(double primBim) {
+    public void setPrimBim(int primBim) {
         this.primBim = primBim;
     }
 
-    public double getSegBim() {
+    public int getSegBim() {
         return segBim;
     }
 
-    public void setSegBim(double segBim) {
+    public void setSegBim(int segBim) {
         this.segBim = segBim;
     }
 
-    public double getTercBim() {
+    public int getTercBim() {
         return tercBim;
     }
 
-    public void setTercBim(double tercBim) {
+    public void setTercBim(int tercBim) {
         this.tercBim = tercBim;
     }
 
-    public double getQuarBim() {
+    public int getQuarBim() {
         return quarBim;
     }
 
-    public void setQuarBim(double quarBim) {
+    public void setQuarBim(int quarBim) {
         this.quarBim = quarBim;
     }
 

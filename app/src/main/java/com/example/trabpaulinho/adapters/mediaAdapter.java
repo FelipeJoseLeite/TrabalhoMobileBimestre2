@@ -48,7 +48,7 @@ public class mediaAdapter extends BaseAdapter {
 
         String resultado = "";
 
-        double media = 0.0;
+        int media = 0;
 
         Aluno aluno = lista.get(position);
 
