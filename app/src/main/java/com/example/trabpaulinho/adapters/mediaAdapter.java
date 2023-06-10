@@ -55,7 +55,7 @@ public class mediaAdapter extends BaseAdapter {
         media =(lista.get(position).getDisciplina().getPrimBim() + lista.get(position).getDisciplina().getSegBim()
                 + lista.get(position).getDisciplina().getTercBim()+ lista.get(position).getDisciplina().getQuarBim()) / 4;
 
-        if(media >= 60){
+        if(media >= 6){
             resultado = "APROVADO";
         }else{
             resultado = "REPROVADO";
@@ -65,14 +65,12 @@ public class mediaAdapter extends BaseAdapter {
         TextView tvRa = convertView.findViewById(R.id.exRa);
         TextView tvResultado = convertView.findViewById(R.id.exAprovacao);
         TextView tvMediaTotal = convertView.findViewById(R.id.exMedia);
-        TextView tvMateria = convertView.findViewById(R.id.tvMateria);
 
 
         tvAlunoMedia.setText(aluno.getNome());
         tvRa.setText(tvRa.getText().toString() + aluno.getRa());
         tvResultado.setText(resultado);
-        tvMediaTotal.setText(String.valueOf(media));
-        tvMateria.setText(aluno.getDisciplina().getNome());
+        tvMediaTotal.setText("Média Final: "+ String.valueOf(media));
 
         return convertView;
     }

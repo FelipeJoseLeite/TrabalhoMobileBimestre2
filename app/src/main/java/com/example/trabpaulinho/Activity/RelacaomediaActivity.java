@@ -94,8 +94,8 @@ public class RelacaomediaActivity extends AppCompatActivity {
         ArrayList<Aluno> listaFiltrada = new ArrayList<>();
 
         for (int i = 0; i < lista.size(); i++) {
-            String nomeDiscuplinaSelecionada = spDp.getItemAtPosition(disciplinaSelecionadaPosicao).toString();
-            if (lista.get(i).getDisciplina().equals(nomeDiscuplinaSelecionada)) {
+            String nomeDisciplinaSelecionada = spDp.getItemAtPosition(disciplinaSelecionadaPosicao).toString();
+            if (lista.get(i).getDisciplina().getNome().equals(nomeDisciplinaSelecionada)) {
                 listaFiltrada.add(lista.get(i));
             }
 

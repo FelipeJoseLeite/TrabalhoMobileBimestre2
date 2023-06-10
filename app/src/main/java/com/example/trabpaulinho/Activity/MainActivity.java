@@ -224,8 +224,6 @@ public class MainActivity extends AppCompatActivity {
             int posicaoAluno = -1;
 
             for (int i = 0; i < Globais.listaNotas.size(); i++) {
-                Toast.makeText(this, "teste GlobDisc "+ Globais.listaNotas.get(i).getDisciplina().getNome(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "teste TelaDisc "+ dpSel.getNome(), Toast.LENGTH_SHORT).show();
                 if (String.valueOf(Globais.listaNotas.get(i).getRa()).equals(edRa.getText().toString())
                         && Globais.listaNotas.get(i).getNome().equals(edNome.getText().toString())
                         && Globais.listaNotas.get(i).getDisciplina().getNome().equals(dpSel.getNome())) {
@@ -234,7 +232,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (posicaoAluno == -1) {
-                Toast.makeText(this, "teste " + posicaoAluno, Toast.LENGTH_SHORT).show();
                 aluno.setNome(edNome.getText().toString());
                 aluno.setRa(Integer.parseInt(edRa.getText().toString()));
                 aluno.setDisciplina(dpSel);
@@ -260,23 +257,22 @@ public class MainActivity extends AppCompatActivity {
 
 
             if (posicaoAluno != -1) {
-                Toast.makeText(this, "teste " + posicaoAluno, Toast.LENGTH_SHORT).show();
 
                 Globais.listaNotas.get(posicaoAluno).setNome(edNome.getText().toString());
                 Globais.listaNotas.get(posicaoAluno).setRa(Integer.parseInt(edRa.getText().toString()));
                 Globais.listaNotas.get(posicaoAluno).setDisciplina(dpSel);
 
                 switch (bimSel) {
-                    case "1 Bim":
+                    case "1 Bi":
                         Globais.listaNotas.get(posicaoAluno).getDisciplina().setPrimBim(Integer.parseInt(edNota.getText().toString()));
                         break;
-                    case "2 Bim":
+                    case "2 Bi":
                         Globais.listaNotas.get(posicaoAluno).getDisciplina().setSegBim(Integer.parseInt(edNota.getText().toString()));
                         break;
-                    case "3 Bim":
+                    case "3 Bi":
                         Globais.listaNotas.get(posicaoAluno).getDisciplina().setTercBim(Integer.parseInt(edNota.getText().toString()));
                         break;
-                    case "4 Bim":
+                    case "4 Bi":
                         Globais.listaNotas.get(posicaoAluno).getDisciplina().setQuarBim(Integer.parseInt(edNota.getText().toString()));
                         break;
                 }
